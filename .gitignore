@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+
+# Production
+dist
+
+# Misc
+.DS_Store
+npm-debug.log
+TODO.md
