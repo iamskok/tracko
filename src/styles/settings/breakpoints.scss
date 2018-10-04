@@ -1,0 +1,21 @@
+///
+/// Media query configuration
+///
+/// @group settings
+///
+/// @type map
+///
+/// @prop {null|number} Breakpoints.xs extra-small breakpoint
+/// @prop {null|number} Breakpoints.sm small breakpoint
+/// @prop {null|number} Breakpoints.md medium breakpoint
+/// @prop {null|number} Breakpoints.lg large breakpoint
+/// @prop {null|number} Breakpoints.xl extra-large breakpoint
+///
+
+$breakpoints: (
+	'xs': null,
+	'sm': 600px,
+	'md': 960px,
+	'lg': 1280px,
+	'xl': 1920px,
+);

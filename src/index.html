@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tracko</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+	<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.main.css %>">
+</head>
+<body>
+	<section class="Board">
+		<header class="Board-headerContainer">
+			<h1 class="Board-header">Tracko</h1>
+		</header>
+
+		<section class="Board-body">
+			<section class="Column" id="to-do">
+				<h2 class="Column-header">To Do</h2>
+
+				<div class="Card">
+					<div class="Card-buttonContainer">
+						<button class="Card-button">edit</button>
+						<button class="Card-button">remove</button>
+					</div>
+
+					<h3 class="Card-header">Add project boilerplate with Sass, ES6, webpack, etc</h3>
+
+					<span class="Card-time">1 day</span>
+					
+					<div class="Card-buttonContainer">
+						<button class="Card-button isDisabled">Move left</button>
+						<button class="Card-button">Move right</button>
+					</div>
+				</div>
+
+				<div class="Card">
+					<div class="Card-buttonContainer">
+						<button class="Card-button">edit</button>
+						<button class="Card-button">remove</button>
+					</div>
+
+					<h3 class="Card-header">Add Tracko board markup</h3>
+					<span class="Card-time">2 hours</span>
+
+					<div class="Card-buttonContainer">
+						<button class="Card-button isDisabled">Move left</button>
+						<button class="Card-button">Move right</button>
+					</div>
+				</div>
+
+				<button class="Column-button">Add new</button>
+			</section>
+			
+			<section class="Column" id="reopen">
+				<h2 class="Column-header">Reopen</h2>
+
+				<div class="Card">
+					<div class="Card-buttonContainer">
+						<button class="Card-button">edit</button>
+						<button class="Card-button">remove</button>
+					</div>
+
+					<h3 class="Card-header">Add project boilerplate</h3>
+					<span class="Card-time">1 day</span>
+
+					<div class="Card-buttonContainer">
+						<button class="Card-button">Move left</button>
+						<button class="Card-button">Move right</button>
+					</div>
+				</div>
+			</section>
+
+			<section class="Column" id="ready-for-testing">
+				<h2 class="Column-header">Ready for testing</h2>
+			</section>
+
+			<section class="Column" id="done">
+				<h2 class="Column-header">Done</h2>
+
+				<div class="Card">
+					<div class="Card-buttonContainer">
+						<button class="Card-button">edit</button>
+						<button class="Card-button">remove</button>
+					</div>
+
+					<h3 class="Card-header">Create project idea</h3>
+					<span class="Card-time">2 days</span>
+
+					<div class="Card-buttonContainer">
+						<button class="Card-button">Move left</button>
+						<button class="Card-button isDisabled">Move right</button>
+					</div>
+				</div>
+			</section>			
+		</section>
+	</section>
+	<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+</body>
+</html>

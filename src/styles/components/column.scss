@@ -1,0 +1,49 @@
+@import '../settings/colors.scss';
+@import '../settings/fonts.scss';
+@import '../settings/spaces.scss';
+@import '../settings/borders.scss';
+@import '../settings/transitions.scss';
+@import '../tools/media.scss';
+
+// 1. Use fixed width for small screens and responsive width on large screens
+// 2. Adjust full height with `.Board-header` height
+.Column {
+	flex: 0 0 320px; // 1.
+	padding: 0 $Space--lg;
+	min-height: calc(100vh - 45px); // 2.
+	border: $Border $Color--gray900;
+	border-top: 0;
+	border-left: 0;
+
+	@include media('lg') {
+		flex: 0 0 25%; // 1.
+	}
+}
+
+.Column-header {
+	color: $Color--gray50;
+	font-size: $FontSize--md;
+	font-weight: $FontWeight--light;
+}
+
+.Column-button {
+	display: flex;
+	margin-left: auto;	
+	margin-right: auto;	
+	margin-bottom: $Space--lg;
+	padding: $Space--sm $Space--lg;
+	font-size: $FontSize--sm;
+	font-weight: $FontWeight--light;
+	background-color: $Color--gray200;
+	transition: $Transition;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: $Border-radius;
+
+	&:hover,
+	&:focus {
+		color: $Color--gray50;
+		background-color: $Color--secondary;
+		cursor: pointer;
+	}
+}
