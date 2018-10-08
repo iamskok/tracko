@@ -47,8 +47,7 @@
 	transition: $Transition;
 	cursor: pointer;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		color: $Color--secondary;
 	}
 
