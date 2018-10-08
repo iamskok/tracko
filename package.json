@@ -1,0 +1,58 @@
+{
+	"name": "Tracko",
+	"version": "0.1.1",
+	"description": "Trello board clone",
+	"license": "MIT",
+	"repository": "git@github.com:iamskok/tracko.git",
+	"keywords": [
+		"sass",
+		"es6"
+	],
+	"author": "Vladimir Skok ",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack -p",
+		"dev": "webpack-dashboard webpack-dev-server",
+		"commit": "git-cz",
+		"release": "standard-version"
+	},
+	"config": {
+		"commitizen": {
+			"path": "node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": "cz-config.js"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"devDependencies": {
+		"@babel/core": "^7.1.0",
+		"@babel/preset-env": "^7.1.0",
+		"@commitlint/cli": "^7.0.0",
+		"@commitlint/config-conventional": "^7.0.1",
+		"autoprefixer": "^9.1.5",
+		"babel-loader": "^8.0.2",
+		"clean-webpack-plugin": "^0.1.19",
+		"commitizen": "^2.10.1",
+		"commitlint": "^7.1.2",
+		"css-loader": "^1.0.0",
+		"cz-customizable": "^5.2.0",
+		"html-webpack-plugin": "^3.2.0",
+		"husky": "^1.0.1",
+		"mini-css-extract-plugin": "^0.4.3",
+		"node-sass": "^4.9.3",
+		"postcss-loader": "^3.0.0",
+		"sass-loader": "^7.1.0",
+		"standard-version": "^4.4.0",
+		"style-loader": "^0.23.0",
+		"webpack": "^4.20.2",
+		"webpack-cli": "^3.1.1",
+		"webpack-dashboard": "^2.0.0",
+		"webpack-dev-server": "^3.1.9",
+		"webpack-md5-hash": "^0.0.6"
+	}
+}
