@@ -1,0 +1,46 @@
+@import '../settings/breakpoints.scss';
+
+///
+/// Mixin for managing media queries
+///
+/// @group tools
+///
+/// @require {map} $breakpoints
+///
+/// @param {string} $breakpoint breakpoint name
+///
+/// @content [Any CSS properties]
+///
+/// @output `@content` in `@media` wrapper
+///
+/// @example
+///  @include bp(lg) {
+///    margin-top: 0;
+///  }
+///
+
+@mixin media($breakpoint) {
+	// Check if current breakpoint exists
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpointValue: map-get($breakpoints, $breakpoint);
+		// Skip `@media` query for `null` value
+		@if (type-of($breakpointValue) == null) {
+			@content;
+		}
+		// Throw error on incorrect media query values
+		@else if (type-of($breakpointValue) != number) or
+			($breakpointValue <= 0) {
+			@error "Media query `#{$breakpoint}` has incorrect value.";
+		}
+		// Add `@media` query with `$breakpointValue`
+		@else {
+			@media (min-width: $breakpointValue) {
+				@content;
+			}
+		}
+	}
+	// Throw error if media query was not found
+	@else {
+		@error "Media query `#{$breakpoint}` was not found.";
+	}
+}
