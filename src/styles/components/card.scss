@@ -1,0 +1,65 @@
+@import '../settings/colors.scss';
+@import '../settings/fonts.scss';
+@import '../settings/spaces.scss';
+@import '../settings/box-shadows.scss';
+@import '../settings/transitions.scss';
+@import '../settings/borders.scss';
+@import '../utilities/display.scss';
+@import '../tools/media.scss';
+
+.Card {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: $Space--lg;
+	padding: $Space--lg;
+	width: 100%;
+	background-color: $Color--gray200;
+	border: $Border $Color--gray900;
+	border-radius: $Border-radius;
+	transition: $Transition;
+
+	&:hover {
+		box-shadow: $BoxShadow;
+	}
+}
+
+.Card-header {
+	margin-top: $Space--lg;
+	margin-bottom: $Space--lg;
+	font-size: $FontSize--md;
+	font-weight: $FontWeight--bold;
+}
+
+.Card-time {
+	margin-bottom: $Space--lg;
+	font-size: $FontSize--xs;
+	font-weight: $FontWeight--light;
+	color: $Color--gray700;
+}
+
+.Card-button {
+	padding: 0;
+	color: $Color--darkPrimary;
+	font-weight: $FontWeight--bold;
+	text-transform: uppercase;
+	background-color: transparent;
+	border: 0;
+	transition: $Transition;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		color: $Color--secondary;
+	}
+
+	&.isDisabled {
+		color: $Color--gray200;
+		cursor: default;
+		user-select: none;
+	}
+}
+
+.Card-buttonContainer {
+	display: flex;
+	justify-content: space-between;
+}
