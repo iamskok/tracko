@@ -1,0 +1,42 @@
+{
+	"columns": [
+		{
+			"id": "to-do",
+			"title": "To Do",
+			"button": "add new",
+			"cards": [
+				{
+					"title": "Add project boilerplate with Sass, ES6, webpack, etc",
+					"time": "1 day"
+				},
+				{
+					"title": "Add Tracko board markup",
+					"time": "2 hours"
+				}
+			]
+		},
+		{
+			"id": "reopen",
+			"title": "Reopen",
+			"cards": [
+				{
+					"title": "Add project boilerplate",
+					"time": "2 days"
+				}
+			]
+		},
+		{
+			"id": "ready-for-testing",
+			"title": "Ready for testing"
+		},
+		{
+			"id": "done",
+			"title": "Done",
+			"cards": [
+				{
+					"title": "Create project idea"
+				}
+			]
+		}
+	]
+}
