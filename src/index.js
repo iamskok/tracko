@@ -5,4 +5,4 @@ import './styles/components/column.scss';
 import './styles/components/card.scss';
 
 // Scripts
-import './scripts/index';
+import './scripts/mainController';

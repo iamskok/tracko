@@ -1,9 +1,4 @@
-import data from '../data.json';
-
-// `.Board-body`
-const boardBody = document.getElementsByClassName('Board-body')[0];
-
-const createColumns = (data) => {
+export default function createColumns(data) {
 	const columnCollection = [];
 
 	// Loop over all column's data
@@ -118,8 +113,3 @@ const createColumns = (data) => {
 
 	return columnCollection;
 }
-
-// Loop over column's data and append it inside `.Board-body`
-createColumns(data.columns).forEach((column) => {
-	boardBody.appendChild(column);
-});
