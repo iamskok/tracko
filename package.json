@@ -54,5 +54,8 @@
 		"webpack-dashboard": "^2.0.0",
 		"webpack-dev-server": "^3.1.9",
 		"webpack-md5-hash": "^0.0.6"
+	},
+	"dependencies": {
+		"underscore": "^1.9.1"
 	}
 }
