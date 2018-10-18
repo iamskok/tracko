@@ -23,19 +23,19 @@ export default class Renderer {
 								"<span class='Card-time'><%= card.time %></span>" +
 								// Disable left button for the first column
 								"<% if (column === columns[0]) { %>" +
-									"<div class='Card-buttonContainer'>" +
+									"<div class='Card-buttonContainer js-Card-buttonContainer--shift'>" +
 										"<button class='Card-button isDisabled js-Card-button-isDisabled'>move left</button>" +
 										"<button class='Card-button'>move right</button>" +
 									"</div>" +
 								// Disable right button for the last column
 								"<% } else if (column === columns[columns.length - 1]) { %>" +
-									"<div class='Card-buttonContainer'>" +
+									"<div class='Card-buttonContainer js-Card-buttonContainer--shift'>" +
 										"<button class='Card-button'>move left</button>" +
 										"<button class='Card-button isDisabled js-Card-button-isDisabled'>move right</button>" +
 									"</div>" +
 								// Output all buttons for the the rest of the columns
 								"<% } else { %>" +
-									"<div class='Card-buttonContainer'>" +
+									"<div class='Card-buttonContainer js-Card-buttonContainer--shift'>" +
 										"<button class='Card-button'>move left</button>" +
 										"<button class='Card-button'>move right</button>" +
 									"</div>" +
