@@ -21,7 +21,6 @@ class MainController {
 					}
 					// Check if it's "move right" button
 					if (event.target === event.target.parentElement.childNodes[1]) {
-						console.log('move right');
 						this.taskMoveRight();
 					}
 				}
