@@ -16,17 +16,27 @@ class MainController {
 				if (!event.target.className.includes('js-Card-button-isDisabled')) {
 					// Check it it's "move left" button
 					if (event.target === event.target.parentElement.childNodes[0]) {
-						console.log('move left');
+						// console.log('move left');
+						this.taskMoveLeft();
 					}
 					// Check if it's "move right" button
 					if (event.target === event.target.parentElement.childNodes[1]) {
 						console.log('move right');
+						this.taskMoveRight();
 					}
 				}
 			}
 		}
 		event.stopPropagation();
-	};
+	}
+
+	taskMoveLeft() {
+		console.log('move left');
+	}
+
+	taskMoveRight() {
+		console.log('move left');
+	}
 }
 
 const mainController = new MainController(data);
