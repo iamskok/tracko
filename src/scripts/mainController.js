@@ -34,7 +34,7 @@ class MainController {
 	}
 
 	taskMoveRight() {
-		console.log('move left');
+		console.log('move right');
 	}
 }
 
