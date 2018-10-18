@@ -2,10 +2,10 @@ import _ from 'underscore';
 
 export default class Renderer {
 	render(state) {
-		const jsBoardBody = document.querySelector('.js-Board-body');
+		const boardBody = document.querySelector('.js-Board-body');
 
 		// Append all columns inside `.js-Board-body`
-		jsBoardBody.innerHTML = _.template(
+		boardBody.innerHTML = _.template(
 			// Loop over every column
 			"<% columns.forEach((column) => { %>" +
 				"<section id='<%= column.id %>' class='Column'>" +
