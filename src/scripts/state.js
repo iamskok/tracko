@@ -1,1 +1,1 @@
-let state = {};
+const state = {};
