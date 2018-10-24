@@ -16,8 +16,10 @@ module.exports = {
 		{ name: 'git' },
 		{ name: 'build' },
 		{ name: 'ui' },
-		{ name: 'models' },
-		{ name: 'services' }
+		{ name: 'model' },
+		{ name: 'controller' },
+		{ name: 'view' },
+		{ name: 'service' }
 	],
 
 	messages: {

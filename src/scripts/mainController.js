@@ -9,20 +9,18 @@ class MainController {
 	}
 
 	handleClick(event) {
-		if (event.target !== event.currentTarget) {
-			// Check if it's "move left" or "move right" button
-			if (event.target.parentElement.className.includes('js-Card-buttonContainer--shift')) {
-				// Check if the button is not disabled
-				if (!event.target.className.includes('js-Card-button-isDisabled')) {
-					// Check it it's "move left" button
-					if (event.target === event.target.parentElement.childNodes[0]) {
-						// console.log('move left');
-						this.taskMoveLeft();
-					}
-					// Check if it's "move right" button
-					if (event.target === event.target.parentElement.childNodes[1]) {
-						this.taskMoveRight();
-					}
+		// Check if it's "move left" or "move right" button
+		if (event.target.parentElement.className.includes('js-Card-buttonContainer--shift')) {
+			// Check if the button is not disabled
+			if (!event.target.className.includes('js-Card-button-isDisabled')) {
+				// Check it it's "move left" button
+				if (event.target === event.target.parentElement.childNodes[0]) {
+					// console.log('move left');
+					this.taskMoveLeft();
+				}
+				// Check if it's "move right" button
+				if (event.target === event.target.parentElement.childNodes[1]) {
+					this.taskMoveRight();
 				}
 			}
 		}
