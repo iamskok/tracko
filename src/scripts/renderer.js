@@ -14,7 +14,7 @@ export default class Renderer {
 					"<% if (column.cards !== undefined && column.cards.length > 0) { %>" +
 						// Loop over every card in a column
 						"<% column.cards.forEach((card) => { %>" +
-							"<div class='Card'>" +
+							"<div id=<%= card.id %> class='Card'>" +
 								"<div class='Card-buttonContainer'>" +
 									"<button class='Card-button'>edit</button>" +
 									"<button class='Card-button'>remove</button>" +
