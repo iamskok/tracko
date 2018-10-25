@@ -7,11 +7,19 @@ const renderer = new Renderer();
 class MainController {
 	constructor(state) {
 		window.onload = renderer.render(state);
+
+		// Get an array of all cards
+		const cards = Array.from(document.getElementsByClassName('Card'));
 		// Add animation to all Cards
-		Array.from(document.getElementsByClassName('Card'))
-			.forEach((card) => {
-				card.style.animation = 'slide-up 0.3s ease-in';
+		cards.forEach((card) => {
+			card.style.animation = 'slide-up 0.3s ease-in';
 		});
+		// Remove animation from all Cards
+		setTimeout(() => {
+			cards.forEach((card) => {
+				card.removeAttribute('style');
+			});
+		}, 300);
 	}
 
 	handleClick(event) {
