@@ -7,6 +7,11 @@ const renderer = new Renderer();
 class MainController {
 	constructor(state) {
 		window.onload = renderer.render(state);
+		// Add animation to all Cards
+		Array.from(document.getElementsByClassName('Card'))
+			.forEach((card) => {
+				card.style.animation = 'slide-up 0.3s ease-in';
+		});
 	}
 
 	handleClick(event) {
