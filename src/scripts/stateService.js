@@ -1,8 +1,23 @@
+/* REVIEW
+Зачем и тут и в MainCtrl import state?
+Этот класс инициализируется MainCtrl
+потом
+StateService.setState(state)
+* */
 import state from './state';
 
+/* REVIEW
+не тут - стейт хранится в StateService
+* */
 const columns = state.columns;
 
 export default class StateService {
+
+    /* REVIEW
+	эти методы - не статик
+	они должны работать с this.state
+	* */
+
 	static taskMoveLeft(id) {
 		columns.forEach((column, columnIndex) => {
 			if (columns[0] !== column) {
