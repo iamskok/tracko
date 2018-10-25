@@ -13,7 +13,8 @@ class MainController {
 		// Check if it's "move left" or "move right" button
 		if (event.target.parentElement.className.includes('js-Card-buttonContainer--shift')) {
 			// Check if the button is not disabled
-			if (!event.target.className.includes('js-Card-button-isDisabled')) {
+			if (!event.target.className.includes('js-Card-button') && 
+				!event.target.className.includes('js-isDisabled')) {
 				// Get `id` of a clicked card and convert it to integer
 				const id = Number.parseInt(event.target.parentElement.parentElement.id);
 				// "move left" button
