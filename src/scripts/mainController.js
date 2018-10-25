@@ -1,10 +1,11 @@
 import Renderer from './Renderer';
 import state from './state';
-import data from '../data.json';
+import StateService from './stateService';
+
+const renderer = new Renderer();
 
 class MainController {
 	constructor(state) {
-		const renderer = new Renderer();
 		window.onload = renderer.render(state);
 	}
 
@@ -13,13 +14,13 @@ class MainController {
 		if (event.target.parentElement.className.includes('js-Card-buttonContainer--shift')) {
 			// Check if the button is not disabled
 			if (!event.target.className.includes('js-Card-button-isDisabled')) {
-				// Get `id` of a clicked card 
-				const id = event.target.parentElement.parentElement.id;
-				// Check it it's "move left" button
+				// Get `id` of a clicked card and convert it to integer
+				const id = Number.parseInt(event.target.parentElement.parentElement.id);
+				// "move left" button
 				if (event.target === event.target.parentElement.childNodes[0]) {
 					this.taskMoveLeft(id);
 				}
-				// Check if it's "move right" button
+				// "move right" button
 				if (event.target === event.target.parentElement.childNodes[1]) {
 					this.taskMoveRight(id);
 				}
@@ -29,14 +30,20 @@ class MainController {
 	}
 
 	taskMoveLeft(id) {
-		console.log('move left', 'id:', id);
+		StateService.taskMoveLeft(id, state);
+		this.setBoard(state);
 	}
 
 	taskMoveRight(id) {
-		console.log('move right', 'id:', id);
+		StateService.taskMoveRight(id, state);
+		this.setBoard(state);
+	}
+
+	setBoard(state) {
+		renderer.render(state);	
 	}
 }
 
-const mainController = new MainController(data);
+const mainController = new MainController(state);
 const boardBody = document.querySelector('.js-Board-body');
 boardBody.addEventListener('click', (event) => mainController.handleClick(event));
