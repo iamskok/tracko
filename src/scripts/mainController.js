@@ -15,11 +15,7 @@ class MainController {
 			card.style.animation = 'slide-up 0.3s ease-in';
 		});
 		// Remove animation from all Cards
-		setTimeout(() => {
-			cards.forEach((card) => {
-				card.removeAttribute('style');
-			});
-		}, 300);
+		setTimeout(() => cards.forEach((card) => card.removeAttribute('style')), 300);
 	}
 
 	handleClick(event) {
