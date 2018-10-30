@@ -14,7 +14,7 @@ export default class Renderer {
 					"<% if (column.cards !== undefined && column.cards.length > 0) { %>" +
 						// Loop over every card in a column
 						"<% column.cards.forEach((card) => { %>" +
-							"<div id=<%= card.id %> class='Card'>" +
+							"<div id=<%= card.id %> class='Card isAnimated'>" +
 								"<div class='Card-buttonContainer'>" +
 									"<button class='Card-button'>edit</button>" +
 									"<button class='Card-button'>remove</button>" +
@@ -50,5 +50,12 @@ export default class Renderer {
 				"</section>" +
 			"<% }); %>"
 		)(state);
+	}
+
+	removeCardAnimation(state, delay = 300) {
+		const cards = Array.from(document.getElementsByClassName('Card'));
+		setTimeout(() => (cards.forEach((card) => {
+			return card.className = card.className.replace('isAnimated', '');
+		})), delay);
 	}
 }

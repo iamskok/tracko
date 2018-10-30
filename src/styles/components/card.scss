@@ -19,6 +19,10 @@
 	border-radius: $Border-radius;
 	transition: $Transition;
 
+	&.isAnimated {
+		animation: Animation--slide-up $Animation-duration;
+	}
+
 	&:hover {
 		box-shadow: $BoxShadow;
 	}

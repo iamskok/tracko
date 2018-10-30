@@ -1,6 +1,8 @@
 @import 'spaces.scss';
 
-@keyframes slide-up {
+$Animation-duration: 0.3s;
+
+@keyframes Animation--slide-up {
 	0% {
 		opacity: 0; 
 		transform: translateY($Space--lg);

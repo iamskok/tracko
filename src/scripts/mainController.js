@@ -10,7 +10,7 @@ const renderer = new Renderer();
 class MainController {
     constructor(state) {
         window.onload = renderer.render(state);
-
+        this.removeCardAnimation(state);
         /* REVIEW
         MainController не занимается фигней типа добавления стилей, тем более инлайн-стилей.
         MainController.constructor вызывается до того, как на страницу подъедут таски и проч
@@ -20,17 +20,17 @@ class MainController {
         * */
 
         // Get an array of all cards
-        const cards = Array.from(document.getElementsByClassName('Card'));
+        // const cards = Array.from(document.getElementsByClassName('Card'));
         // Add animation to all Cards
-        cards.forEach((card) => {
+        // cards.forEach((card) => {
             /* REVIEW
             Инлайн стили - прибежище судного дня и порой его же причина =)
             Нужна анимация - суй ее в стили.
             * */
-            card.style.animation = 'slide-up 0.3s ease-in';
-        });
+            // card.style.animation = 'slide-up 0.3s ease-in';
+        // });
         // Remove animation from all Cards
-        setTimeout(() => cards.forEach((card) => card.removeAttribute('style')), 300);
+        // setTimeout(() => cards.forEach((card) => card.removeAttribute('style')), 300);
     }
 
     handleClick(event) {
@@ -87,6 +87,10 @@ class MainController {
         Renderer.render(state)
         * */
         renderer.render(state);
+    }
+
+    removeCardAnimation(state) {
+        renderer.removeCardAnimation(state);
     }
 }
 
