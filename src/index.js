@@ -5,4 +5,6 @@ import './styles/components/column.scss';
 import './styles/components/card.scss';
 
 // Scripts
-import './scripts/mainController';
+import MainController from './scripts/mainController';
+
+new MainController();
