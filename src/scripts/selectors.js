@@ -1,5 +1,5 @@
 export default {
-	animated: 'isAnimated'
+	animated: 'isAnimated',
 	disabled: 'isDisabled',
 	board: 'js-Board-body',
 	btnLeft: 'js-Card-button--left',

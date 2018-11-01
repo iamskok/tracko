@@ -4,7 +4,7 @@ export default `
 		<h2 class="Column-header"><%= column.title %></h2>
 		<% if (column.cards !== undefined && column.cards.length > 0) { %>
 			<% column.cards.forEach((card) => { %>
-				<div id=<%= card.id %> class="Card isAnimated">
+				<div id=<%= card.id %> class="Card isAnimated js-Card">
 					<div class="Card-buttonContainer">
 						<button class="Card-button">edit</button>
 						<button class="Card-button">remove</button>

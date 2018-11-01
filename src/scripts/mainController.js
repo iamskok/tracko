@@ -1,5 +1,6 @@
 import Renderer from './Renderer';
 import StateService from './StateService';
+import SELECTORS from './selectors';
 
 export default class MainController {
 	constructor() {
@@ -8,10 +9,8 @@ export default class MainController {
 		} else {
 			return this;
 		}
-		
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
-
 		window.onload = () => {
 			this.initEventHandlers();
 			this.setBoard();
@@ -22,23 +21,15 @@ export default class MainController {
 	}
 
 	handleTaskMoveClick(event) {
-		const SELECTORS = {
-			disabled: 'isDisabled',
-			left: 'js-Card-button--left',
-			right: 'js-Card-button--right'
-		};
-
-		// Check if it's a button and it's not disabled
 		if (!event.target.className.includes(SELECTORS.disabled) &&
-			(event.target.className.includes(SELECTORS.left) ||
-			event.target.className.includes(SELECTORS.right))) {
-			// Convert ID (string => integer)
+			(event.target.className.includes(SELECTORS.btnLeft) ||
+			event.target.className.includes(SELECTORS.btnRight))) {
 			const id = Number.parseInt(event.target.dataset.id);
 			
-			if (event.target.className.includes(SELECTORS.left)) {
+			if (event.target.className.includes(SELECTORS.btnLeft)) {
 				this.taskMoveLeft(id);
 			}
-			if (event.target.className.includes(SELECTORS.right)) {
+			if (event.target.className.includes(SELECTORS.btnRight)) {
 				this.taskMoveRight(id);
 			}
 		}
@@ -63,8 +54,8 @@ export default class MainController {
 	}
 
 	initEventHandlers() {
-		const boardBody = document.querySelector('.js-Board-body');
-		boardBody.addEventListener('click', (event) => this.handleTaskMoveClick(event));
+		const board = document.getElementsByClassName(SELECTORS.board)[0];
+		board.addEventListener('click', (event) => this.handleTaskMoveClick(event));
 	}
 
 	removeCardAnimation(delay) {
