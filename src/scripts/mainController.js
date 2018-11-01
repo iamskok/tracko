@@ -1,5 +1,5 @@
 import Renderer from './Renderer';
-import StateService from './stateService';
+import StateService from './StateService';
 
 export default class MainController {
 	constructor() {
