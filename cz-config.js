@@ -4,6 +4,7 @@ module.exports = {
 	types: [
 		{ value: 'feat',     name: '✨ FEATURE: a new feature' },
 		{ value: 'fix',      name: '🐛 FIX: a bug fix' },
+		{ value: 'review',   name: 'REVIEW: a review' },
 		{ value: 'chore',    name: '🔧 CHORE: changes to the build process or auxiliary tools\n and libraries such as documentation generation' },
 		{ value: 'docs',     name: '📝 DOCS: documentation only changes' },
 		{ value: 'style',    name: '🎨 STYLE: changes that do not affect the meaning of the code\n (white-space, formatting, missing semi-colons, etc) '},
@@ -16,8 +17,10 @@ module.exports = {
 		{ name: 'git' },
 		{ name: 'build' },
 		{ name: 'ui' },
-		{ name: 'models' },
-		{ name: 'services' }
+		{ name: 'model' },
+		{ name: 'controller' },
+		{ name: 'view' },
+		{ name: 'service' }
 	],
 
 	messages: {

@@ -5,8 +5,8 @@
 @import '../settings/transitions.scss';
 @import '../tools/media.scss';
 
-// 1. Use fixed width for small screens and responsive width on large screens
-// 2. Adjust full height with `.Board-header` height
+// 1. Use fixed width for small screens and responsive width for large screens
+// 2. Adjust full screen height taking `.Board-header` height in consideration
 .Column {
 	flex: 0 0 320px; // 1.
 	padding: 0 $Space--lg;
@@ -21,9 +21,13 @@
 }
 
 .Column-header {
+	margin: 0 ($Space--lg * -1) $Space--lg;
+	padding: $Space--lg 0;
 	color: $Color--gray50;
 	font-size: $FontSize--md;
 	font-weight: $FontWeight--light;
+	text-align: center;
+	border-bottom: $Border $Color--gray900;
 }
 
 .Column-button {

@@ -4,6 +4,7 @@
 @import '../settings/box-shadows.scss';
 @import '../settings/transitions.scss';
 @import '../settings/borders.scss';
+@import '../settings/animations.scss';
 @import '../utilities/display.scss';
 @import '../tools/media.scss';
 
@@ -17,6 +18,10 @@
 	border: $Border $Color--gray900;
 	border-radius: $Border-radius;
 	transition: $Transition;
+
+	&.isAnimated {
+		animation: Animation--slide-up $Animation-duration;
+	}
 
 	&:hover {
 		box-shadow: $BoxShadow;
