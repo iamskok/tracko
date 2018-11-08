@@ -1,6 +1,6 @@
 import Renderer from './Renderer';
 import StateService from './StateService';
-import SELECTORS from './selectors';
+import {selectors} from './consts';
 
 export default class MainController {
 	constructor() {
@@ -18,15 +18,15 @@ export default class MainController {
 	}
 
 	handleTaskMoveClick(event) {
-		if (!event.target.className.includes(SELECTORS.disabled) &&
-			(event.target.className.includes(SELECTORS.btnLeft) ||
-			event.target.className.includes(SELECTORS.btnRight))) {
+		if (!event.target.className.includes(selectors.disabled) &&
+			(event.target.className.includes(selectors.btnLeft) ||
+			event.target.className.includes(selectors.btnRight))) {
 			const id = Number.parseInt(event.target.dataset.id);
 			
-			if (event.target.className.includes(SELECTORS.btnLeft)) {
+			if (event.target.className.includes(selectors.btnLeft)) {
 				this.taskMoveLeft(id);
 			}
-			if (event.target.className.includes(SELECTORS.btnRight)) {
+			if (event.target.className.includes(selectors.btnRight)) {
 				this.taskMoveRight(id);
 			}
 		}
@@ -49,7 +49,7 @@ export default class MainController {
 	}
 
 	initEventHandlers() {
-		const board = document.getElementsByClassName(SELECTORS.board)[0];
+		const board = document.getElementsByClassName(selectors.board)[0];
 		board.addEventListener('click', (event) => this.handleTaskMoveClick(event));
 	}
 }

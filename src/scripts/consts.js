@@ -1,4 +1,4 @@
-export default {
+const selectors = {
 	animated: 'isAnimated',
 	disabled: 'isDisabled',
 	board: 'js-Board-body',
@@ -6,3 +6,5 @@ export default {
 	btnRight: 'js-Card-button--right',
 	card: 'js-Card'
 };
+
+export {selectors};
