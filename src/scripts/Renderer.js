@@ -3,9 +3,12 @@ import boardTemplate from './template';
 import SELECTORS from './selectors';
 
 export default class Renderer {
-	render(state) {
-		const board = document.getElementsByClassName(SELECTORS.board)[0];
-		board.innerHTML = _.template(boardTemplate)(state);
+	constructor() {
+		this.board = (document.getElementsByClassName(SELECTORS.board)[0]); 
+	}
+	render(state, delay) {
+		this.board.innerHTML = _.template(boardTemplate)(state);
+		this.removeCardAnimation(delay);
 	}
 
 	removeCardAnimation(delay = 300) {
