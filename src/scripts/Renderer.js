@@ -4,7 +4,7 @@ import SELECTORS from './selectors';
 
 export default class Renderer {
 	constructor() {
-		this.board = (document.getElementsByClassName(SELECTORS.board)[0]); 
+		this.board = document.getElementsByClassName(SELECTORS.board)[0];
 	}
 	render(state, delay) {
 		this.board.innerHTML = _.template(boardTemplate)(state);
