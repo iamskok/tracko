@@ -1,5 +1,7 @@
 import Renderer from './Renderer';
 import StateService from './StateService';
+import ColumnService from './ColumnService';
+import TaskService from './TaskService';
 import {selectors} from './consts';
 
 export default class MainController {
@@ -9,9 +11,13 @@ export default class MainController {
 		} else {
 			return this;
 		}
+		this.columnService = new ColumnService();
+		this.taskService = new TaskService();
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
 		window.onload = () => {
+			this.taskService.fetch();
+			this.columnService.fetch();
 			this.initEventHandlers();
 			this.setBoard();
 		}
