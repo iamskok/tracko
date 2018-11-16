@@ -15,9 +15,12 @@ export default class MainController {
 		this.taskService = new TaskService();
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
+
 		window.onload = () => {
-			this.taskService.fetch();
-			this.columnService.fetch();
+			const columns = this.columnService.fetch();
+			const tasks = this.taskService.fetch();
+			const structuredState = this.stateService.structureState(columns, tasks);
+			this.stateService.setState(structuredState);
 			this.initEventHandlers();
 			this.setBoard();
 		}
@@ -50,7 +53,7 @@ export default class MainController {
 	}
 
 	setBoard(delay) {
-		const state = this.stateService.getState()
+		const state = this.stateService.getState();
 		this.renderer.render(state, delay);
 	}
 

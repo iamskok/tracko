@@ -1,10 +1,4 @@
-import state from './state';
-
 export default class StateService {
-	constructor() {
-		this.state = state;
-	}
-
 	setState(state) {
 		this.state = state;
 	}
@@ -13,7 +7,27 @@ export default class StateService {
 		return this.state;
 	}
 
+	structureState(columns, tasks) {
+		const structuredState = {};
+		Object.assign(structuredState, columns);
+		structuredState.columns.forEach(column => {
+			tasks.cards.forEach(task => {
+				if (task.columnId === column.id) {
+					if (Array.isArray(column.cards)) {
+						column.cards.push(task);
+					} else {
+						column.cards = [];
+						column.cards.push(task);
+					}
+				}
+			});
+		});
+
+		return structuredState;
+	}
+
 	taskMoveLeft(id) {
+		const state = this.getState();
 		for (let i = 0; i < state.columns.length; i++) {
 			const column = state.columns[i];
 			if (state.columns[0] !== column) {
@@ -36,6 +50,7 @@ export default class StateService {
 	}
 
 	taskMoveRight(id) {
+		const state = this.getState();
 		for (let i = 0; i < state.columns.length; i++) {
 			const column = state.columns[i];
 			if (state.columns[state.columns.length - 1] !== column) {
