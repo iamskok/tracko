@@ -10,7 +10,6 @@ export default `
 						<button class="Card-button">remove</button>
 					</div>
 					<h3 class="Card-header"><%= card.title %></h3> 
-					<span class="Card-time"><%= card.time %></span>
 					<% if (column === columns[0]) { %>
 						<div class="Card-buttonContainer">
 							<button class="Card-button isDisabled js-Card-button--left"
@@ -43,8 +42,6 @@ export default `
 				</div>
 			<% }); %>
 		<% } %>
-		<% if (column.button) { %>
-			<button class="Column-button"><%= column.button %></button>
-		<% } %>
+		<button class="Column-button">add a task</button>
 	</section>
 <% }); %>`
