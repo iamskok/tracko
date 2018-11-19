@@ -1,16 +1,8 @@
 export default class StateService {
-	setState(state) {
-		this.state = state;
-	}
-
-	getState() {
-		return this.state;
-	}
-
-	structureState(columns, tasks) {
-		const structuredState = {};
-		Object.assign(structuredState, columns);
-		structuredState.columns.forEach(column => {
+	setState(columns, tasks) {
+		const state = {};
+		Object.assign(state, columns);
+		state.columns.forEach(column => {
 			tasks.cards.forEach(task => {
 				if (task.columnId === column.id) {
 					if (Array.isArray(column.cards)) {
@@ -23,7 +15,11 @@ export default class StateService {
 			});
 		});
 
-		return structuredState;
+		this.state = state;
+	}
+
+	getState() {
+		return this.state;
 	}
 
 	taskMoveLeft(id) {
