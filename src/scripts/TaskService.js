@@ -1,6 +1,14 @@
 import tasks from './tasks';
 
 export default class TaskService {
+	constructor() {
+		if (!TaskService.instance) {
+			TaskService.instance = this;
+		} else {
+			return this;
+		}
+	}
+
 	fetch() {
 		return tasks;
 	}
