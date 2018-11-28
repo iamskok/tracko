@@ -16,6 +16,20 @@ export default class TaskService {
 		return tasks;
 	}
 
+	put(task, columnId) {
+		const columns = this.columnService.fetch().columns;
+		columns.forEach(column => {
+			if (column.id === columnId) {
+				const tasks = this.fetch().cards;
+				tasks.push(Object.assign(
+					{id: tasks.length},
+					task,
+					{columnId}
+				));
+			}
+		});
+	}
+
 	edit(id, prop) {
 		const tasks = this.fetch().cards;
 		tasks.forEach(task => {
