@@ -3,7 +3,7 @@ export default class StateService {
 		const state = {};
 		Object.assign(state, columns);
 		state.columns.forEach(column => {
-			tasks.cards.forEach(task => {
+			tasks.forEach(task => {
 				if (task.columnId === column.id) {
 					if (Array.isArray(column.cards)) {
 						column.cards.push(task);
