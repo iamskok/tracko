@@ -17,8 +17,8 @@ export default class TaskService {
 	}
 
 	edit(id, prop) {
-		const tasks = this.fetch();
-		tasks.cards.forEach(task => {
+		const tasks = this.fetch().cards;
+		tasks.forEach(task => {
 			if (task.id === id) {
 				const taskKeys = Object.keys(task);
 				const propKey = Object.keys(prop)[0];
