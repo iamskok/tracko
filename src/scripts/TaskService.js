@@ -1,4 +1,5 @@
 import tasks from './tasks';
+import ColumnService from './ColumnService';
 
 export default class TaskService {
 	constructor() {
@@ -7,6 +8,8 @@ export default class TaskService {
 		} else {
 			return this;
 		}
+
+		this.columnService = new ColumnService();
 	}
 
 	fetch() {
