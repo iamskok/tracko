@@ -1,7 +1,8 @@
 export default class StateService {
 	setState(columns, tasks) {
 		const state = {};
-		Object.assign(state, columns);
+		state.columns = [];
+		Object.assign(state.columns, columns);
 		state.columns.forEach(column => {
 			tasks.forEach(task => {
 				if (task.columnId === column.id) {
@@ -15,6 +16,7 @@ export default class StateService {
 			});
 		});
 
+		console.log('state', state);
 		this.state = state;
 	}
 

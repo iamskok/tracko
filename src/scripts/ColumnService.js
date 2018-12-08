@@ -10,6 +10,6 @@ export default class ColumnService {
 	}
 
 	fetch() {
-		return columns;
+		return columns.columns;
 	}
 }

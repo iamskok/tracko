@@ -16,6 +16,19 @@ export default class MainController {
 		this.taskService = new TaskService();
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
+
+		this.taskService.put(
+			{
+				title: 'TaskService put method'
+			},
+			'done'
+		);
+		this.taskService.edit(
+			3,
+			{
+				title: 'TaskService edit method'
+			}
+		);
 	}
 
 	handleTaskMoveClick(event) {
@@ -25,14 +38,14 @@ export default class MainController {
 
 		tasks.forEach(task => {
 			if (task.id === id) {
-				columns.columns.forEach((column, index) => {
+				columns.forEach((column, index) => {
 					if (column.id === task.columnId) {
 						if (event.target.className.includes(selectors.btnLeft) &&
 							index !== 0) {
 							this.taskMoveLeft(id);
 						}
 						if (event.target.className.includes(selectors.btnRight) &&
-							index !== columns.columns.length - 1) {
+							index !== columns.length - 1) {
 							this.taskMoveRight(id);
 						}
 					}
