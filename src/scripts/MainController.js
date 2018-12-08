@@ -11,18 +11,11 @@ export default class MainController {
 		} else {
 			return this;
 		}
+
 		this.columnService = new ColumnService();
 		this.taskService = new TaskService();
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
-
-		window.onload = () => {
-			const columns = this.columnService.fetch();
-			const tasks = this.taskService.fetch();
-			this.stateService.setState(columns, tasks);
-			this.initEventHandlers();
-			this.setBoard();
-		}
 	}
 
 	handleTaskMoveClick(event) {
