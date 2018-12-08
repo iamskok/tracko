@@ -19,18 +19,27 @@ export default class MainController {
 	}
 
 	handleTaskMoveClick(event) {
-		if (!event.target.className.includes(selectors.disabled) &&
-			(event.target.className.includes(selectors.btnLeft) ||
-			event.target.className.includes(selectors.btnRight))) {
-			const id = Number.parseInt(event.target.dataset.id);
-			
-			if (event.target.className.includes(selectors.btnLeft)) {
-				this.taskMoveLeft(id);
+		const columns = this.columnService.fetch();
+		const tasks = this.taskService.fetch();
+		const id = Number.parseInt(event.target.dataset.id);
+
+		tasks.forEach(task => {
+			if (task.id === id) {
+				columns.columns.forEach((column, index) => {
+					if (column.id === task.columnId) {
+						if (event.target.className.includes(selectors.btnLeft) &&
+							index !== 0) {
+							this.taskMoveLeft(id);
+						}
+						if (event.target.className.includes(selectors.btnRight) &&
+							index !== columns.columns.length - 1) {
+							this.taskMoveRight(id);
+						}
+					}
+				})
 			}
-			if (event.target.className.includes(selectors.btnRight)) {
-				this.taskMoveRight(id);
-			}
-		}
+		});
+
 		event.stopPropagation();
 	}
 
