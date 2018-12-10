@@ -10,9 +10,5 @@ import MainController from './scripts/MainController';
 const mainController = new MainController();
 
 window.onload = () => {
-	const columns = mainController.columnService.fetch();
-	const tasks = mainController.taskService.fetch();
-	mainController.stateService.setState(columns, tasks);
-	mainController.initEventHandlers();
-	mainController.setBoard();
+	mainController.run();
 }

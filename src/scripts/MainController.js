@@ -31,6 +31,14 @@ export default class MainController {
 		);
 	}
 
+	run() {
+		const columns = this.columnService.fetch();
+		const tasks = this.taskService.fetch();
+		this.stateService.setState(columns, tasks);
+		this.initEventHandlers();
+		this.setBoard();
+	}
+
 	handleTaskMoveClick(event) {
 		const columns = this.columnService.fetch();
 		const tasks = this.taskService.fetch();
