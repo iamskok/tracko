@@ -17,7 +17,7 @@ export default class TaskService {
 	}
 
 	put(task, columnId) {
-		this.columnService.fetch().forEach(column => {
+		this.columnService.fetch().find(column => {
 			if (column.id === columnId) {
 				const tasks = this.fetch();
 				tasks.push(Object.assign(
@@ -30,7 +30,7 @@ export default class TaskService {
 	}
 
 	edit(id, prop) {
-		this.fetch().forEach(task => {
+		this.fetch().find(task => {
 			if (task.id === id) {
 				const taskKeys = Object.keys(task);
 				const propKey = Object.keys(prop)[0];
