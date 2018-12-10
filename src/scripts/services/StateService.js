@@ -16,7 +16,6 @@ export default class StateService {
 			});
 		});
 
-		console.log('state', state);
 		this.state = state;
 	}
 

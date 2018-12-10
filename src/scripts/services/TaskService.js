@@ -1,4 +1,4 @@
-import tasks from './tasks';
+import tasks from '../tasks';
 import ColumnService from './ColumnService';
 
 export default class TaskService {

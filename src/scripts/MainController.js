@@ -1,7 +1,7 @@
 import Renderer from './Renderer';
-import StateService from './StateService';
-import ColumnService from './ColumnService';
-import TaskService from './TaskService';
+import StateService from './services/StateService';
+import ColumnService from './services/ColumnService';
+import TaskService from './services/TaskService';
 import {selectors} from './consts';
 
 export default class MainController {
