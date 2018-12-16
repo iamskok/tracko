@@ -9,8 +9,7 @@ export default class StateService {
 					if (Array.isArray(column.cards)) {
 						column.cards.push(task);
 					} else {
-						column.cards = [];
-						column.cards.push(task);
+						column.cards = [task];
 					}
 				}
 			});
