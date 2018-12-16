@@ -43,28 +43,29 @@ export default class MainController {
 		const columns = this.columnService.fetch();
 		const tasks = this.taskService.fetch();
 		const id = Number.parseInt(event.target.dataset.id);
+		const columnId = event.target.dataset.columnId;
 		const disabled = !!event.target.dataset.disabled;
 		const move = event.target.dataset.move;
 
 		if (!disabled) {
 			if (move === 'left') {
-				this.taskMoveLeft(id);
+				this.taskMoveLeft(id, columnId);
 			}
 			if (move === 'right') {
-				this.taskMoveRight(id);
+				this.taskMoveRight(id, columnId);
 			}
 		}
 
 		event.stopPropagation();
 	}
 
-	taskMoveLeft(id) {
-		this.stateService.taskMoveLeft(id);
+	taskMoveLeft(id, columnId) {
+		this.stateService.taskMoveLeft(id, columnId);
 		this.setBoard(false);
 	}
 
-	taskMoveRight(id) {
-		this.stateService.taskMoveRight(id);
+	taskMoveRight(id, columnId) {
+		this.stateService.taskMoveRight(id, columnId);
 		this.setBoard(false);
 	}
 

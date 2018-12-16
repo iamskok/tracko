@@ -22,30 +22,52 @@ export default class StateService {
 		return this.state;
 	}
 
-	taskMoveLeft(id) {
-		const state = this.getState();
-		for (let i = 0; i < state.columns.length; i++) {
-			const column = state.columns[i];
-			if (state.columns[0] !== column) {
-				if (column.cards) {
-					const cardIndex = column.cards.findIndex(card => card.id === id);
-					const card = cardIndex !== -1 && column.cards[cardIndex];
-					if (card) {
-						const prevColumn = state.columns[i - 1];
-						if (prevColumn.cards) {
-							prevColumn.cards.push(card);
-						} else {
-							prevColumn.cards = [card];
-						}
+	// taskMoveLeft(id, columnId) {
+	// 	const state = this.getState();
+	// 	for (let i = 0; i < state.columns.length; i++) {
+	// 		const column = state.columns[i];
+	// 		if (state.columns[0] !== column) {
+	// 			if (column.cards) {
+	// 				const cardIndex = column.cards.findIndex(card => card.id === id);
+	// 				const card = cardIndex !== -1 && column.cards[cardIndex];
+	// 				if (card) {
+	// 					const prevColumn = state.columns[i - 1];
+	// 					if (prevColumn.cards) {
+	// 						prevColumn.cards.push(card);
+	// 					} else {
+	// 						prevColumn.cards = [card];
+	// 					}
 
-						return column.cards.splice(cardIndex, 1);
-					}
-				}
+	// 					return column.cards.splice(cardIndex, 1);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+	taskMoveLeft(id, columnId) {
+		const state = this.getState();
+		console.log(this.getState());
+		const columns = state.columns;
+		const columnIds = columns.map(column => column.id);
+		const firstColumnId = columnIds[0];
+		if (firstColumnId !== columnId) {
+			const currentColumnIndex = columnIds.indexOf(columnId);
+			const currentColumn = columns[currentColumnIndex];
+			const cardIndex = currentColumn.cards.findIndex(card => card.id === id);
+			const card = cardIndex !== -1 && currentColumn.cards[cardIndex];
+			const leftColumn = columns[currentColumnIndex - 1];
+			if (leftColumn.cards) {
+				leftColumn.cards.push(card);
+			} else {
+				leftColumn.cards = [card];
 			}
+			currentColumn.cards.splice(cardIndex, 1);
 		}
+		console.log(this.getState());
 	}
 
-	taskMoveRight(id) {
+	taskMoveRight(id, columnId) {
 		const state = this.getState();
 		for (let i = 0; i < state.columns.length; i++) {
 			const column = state.columns[i];
