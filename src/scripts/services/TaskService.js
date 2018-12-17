@@ -13,14 +13,19 @@ export default class TaskService {
 	}
 
 	fetch() {
-		return tasks.cards;
+		this.tasks = tasks.cards;
+	}
+
+	getTasks() {
+		return this.tasks;
 	}
 
 	put(task, columnId) {
 		this.columnService.fetch().find(column => {
 			if (column.id === columnId) {
-				const tasks = this.fetch();
-				tasks.push(Object.assign(
+				this.fetch();
+				const tasks = this.getTasks();
+				this.tasks.push(Object.assign(
 					{id: tasks.length},
 					task,
 					{columnId}
@@ -30,7 +35,8 @@ export default class TaskService {
 	}
 
 	edit(id, prop) {
-		this.fetch().find(task => {
+		this.fetch();
+		this.getTasks().find(task => {
 			if (task.id === id) {
 				const taskKeys = Object.keys(task);
 				const propKey = Object.keys(prop)[0];
@@ -41,3 +47,4 @@ export default class TaskService {
 		});
 	}
 }
+
