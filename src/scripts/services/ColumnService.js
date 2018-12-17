@@ -10,6 +10,10 @@ export default class ColumnService {
 	}
 
 	fetch() {
-		return columns.columns;
+		this.columns = columns.columns;
+	}
+
+	getColumns() {
+		return this.columns;
 	}
 }

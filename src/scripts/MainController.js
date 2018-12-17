@@ -32,7 +32,8 @@ export default class MainController {
 	}
 
 	run() {
-		const columns = this.columnService.fetch();
+		this.columnService.fetch();
+		const columns = this.columnService.getColumns();
 		this.taskService.fetch();
 		const tasks = this.taskService.getTasks();
 		this.stateService.setState(columns, tasks);
@@ -41,8 +42,8 @@ export default class MainController {
 	}
 
 	handleTaskMoveClick(event) {
-		const columns = this.columnService.fetch();
-		const tasks = this.taskService.fetch();
+		const columns = this.columnService.getColumns();
+		const tasks = this.taskService.getTasks();
 		const id = Number.parseInt(event.target.dataset.id);
 		const disabled = !!event.target.dataset.disabled;
 		const move = event.target.dataset.move;

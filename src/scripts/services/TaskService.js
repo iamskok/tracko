@@ -21,7 +21,8 @@ export default class TaskService {
 	}
 
 	put(task, columnId) {
-		this.columnService.fetch().find(column => {
+		this.columnService.fetch();
+		this.columnService.getColumns().find(column => {
 			if (column.id === columnId) {
 				this.fetch();
 				const tasks = this.getTasks();
