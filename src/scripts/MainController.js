@@ -20,17 +20,24 @@ export default class MainController {
 
 	run() {
 		this.columnService.fetch();
-		const columns = this.columnService.getColumns();
 		this.taskService.fetch();
-		const tasks = this.taskService.getTasks();
-		this.stateService.setState(columns, tasks);
+		this.stateService.setState(
+			this.columnService.getColumns(),
+			this.taskService.getTasks()
+		);
 		this.initEventHandlers();
 		this.setBoard();
 	}
 
 	handleTaskMoveClick(event) {
-		const columns = this.columnService.getColumns();
-		const tasks = this.taskService.getTasks();
+		if (!this.columnService.getColumns()) {
+			this.columnService.fetch();
+		}
+		this.columnService.getColumns();
+		if (!this.taskService.getTasks()) {
+			this.taskService.fetch();
+		}
+		this.taskService.getTasks();
 		const id = Number.parseInt(event.target.dataset.id);
 		const columnId = event.target.dataset.columnId;
 		const disabled = !!event.target.dataset.disabled;
