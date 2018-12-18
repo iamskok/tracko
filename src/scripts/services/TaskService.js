@@ -20,6 +20,13 @@ export default class TaskService {
 		return this.tasks;
 	}
 
+	getTask(id) {
+		if (!this.getTasks()) {
+			this.fetch();
+		}
+		return this.getTasks().filter(task => task.id === id)[0];
+	}
+
 	put(task, columnId) {
 		if (!this.columnService.getColumns()) {
 			this.columnService.fetch();
@@ -36,24 +43,15 @@ export default class TaskService {
 	}
 
 	edit(id, prop) {
-		if (!this.getTasks()) {
-			this.fetch();
+		const task = this.getTask(id);
+		const taskKeys = Object.keys(task);
+		const propKey = Object.keys(prop)[0];
+		if (taskKeys.includes(propKey)) {
+			Object.assign(task, prop);
 		}
-		this.getTasks().find(task => {
-			if (task.id === id) {
-				const taskKeys = Object.keys(task);
-				const propKey = Object.keys(prop)[0];
-				if (taskKeys.includes(propKey)) {
-					Object.assign(task, prop);
-				}
-			}
-		});
 	}
 
-	assignColumn(taskId, columnId) {
-		if (!this.getTasks()) {
-			this.fetch();
-		}
-		this.getTasks().filter(task => task.id === taskId)[0].columnId = columnId;
+	assignColumn(id, columnId) {
+		this.getTask(id).columnId = columnId;
 	}
 }
