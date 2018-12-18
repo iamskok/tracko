@@ -6,7 +6,8 @@ export default `
 			<% column.cards.forEach((card) => { %>
 				<div
 					id=<%= card.id %>
-					class="Card isAnimated js-Card"
+					class="Card isAnimated"
+					data-target="card"
 					data-column-id=<%= card.columnId %>
 				>
 					<div class="Card-buttonContainer">
@@ -17,7 +18,7 @@ export default `
 					<% if (column === columns[0]) { %>
 						<div class="Card-buttonContainer">
 							<button
-								class="Card-button isDisabled js-Card-button--left"
+								class="Card-button isDisabled"
 								data-id=<%= card.id %>
 								data-column-id=<%= card.columnId %>
 								data-disabled="true"
@@ -27,7 +28,7 @@ export default `
 							</button>
 
 							<button
-								class="Card-button js-Card-button--right"
+								class="Card-button"
 								data-id=<%= card.id %>
 								data-column-id=<%= card.columnId %>
 								data-move="right"
@@ -38,7 +39,7 @@ export default `
 					<% } else if (column === columns[columns.length - 1]) { %>
 						<div class="Card-buttonContainer">
 							<button
-								class="Card-button js-Card-button--left" 
+								class="Card-button"
 								data-id=<%= card.id %>
 								data-column-id=<%= card.columnId %>
 								data-move="left"
@@ -46,7 +47,7 @@ export default `
 								move left
 							</button>
 							<button
-								class="Card-button isDisabled js-Card-button--right"
+								class="Card-button isDisabled"
 								data-id=<%= card.id %>
 								data-disabled="true"
 								data-column-id=<%= card.columnId %>
@@ -58,7 +59,7 @@ export default `
 					<% } else { %>
 						<div class="Card-buttonContainer">
 							<button
-								class="Card-button js-Card-button--left"
+								class="Card-button"
 								data-id=<%= card.id %>
 								data-column-id=<%= card.columnId %>
 								data-move="left"
@@ -66,7 +67,7 @@ export default `
 								move left
 							</button>
 							<button
-								class="Card-button js-Card-button--right"
+								class="Card-button"
 								data-id=<%= card.id %>
 								data-column-id=<%= card.columnId %>
 								data-move="right"

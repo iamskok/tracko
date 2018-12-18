@@ -10,6 +10,17 @@ export default class ColumnService {
 	}
 
 	fetch() {
-		return columns.columns;
+		this.columns = columns.columns;
+	}
+
+	getColumns() {
+		return this.columns;
+	}
+
+	getColumn(id) {
+		if (!this.getColumns()) {
+			this.fetch();
+		}
+		return this.getColumns().filter(column => column.id === id)[0];
 	}
 }

@@ -17,12 +17,19 @@ export default class MainController {
 		this.stateService = new StateService();
 		this.renderer = new Renderer();
 
+		// Демонстрация MainController.taskService.getTask(id) метода
+		this.taskService.getTask(3);
+		console.log('MainController.taskService.getTask(3):', this.taskService.getTask(3));
+
+		// Демонстрация MainController.taskService.put(props, columnId) метода
 		this.taskService.put(
 			{
 				title: 'TaskService put method'
 			},
 			'done'
 		);
+
+		// Демонстрация MainController.taskService.edit(id, props) метода
 		this.taskService.edit(
 			3,
 			{
@@ -32,16 +39,33 @@ export default class MainController {
 	}
 
 	run() {
-		const columns = this.columnService.fetch();
-		const tasks = this.taskService.fetch();
-		this.stateService.setState(columns, tasks);
+		this.columnService.fetch();
+		this.taskService.fetch();
+		this.stateService.setState(
+			this.columnService.getColumns(),
+			this.taskService.getTasks()
+		);
+
+		// Демонстрация MainController.setTask(task) метода
+		this.setTask({
+			id: 123, 
+			title: "StateService.setTask", 
+			columnId: "done"}
+		);
+
 		this.initEventHandlers();
 		this.setBoard();
 	}
 
 	handleTaskMoveClick(event) {
-		const columns = this.columnService.fetch();
-		const tasks = this.taskService.fetch();
+		if (!this.columnService.getColumns()) {
+			this.columnService.fetch();
+		}
+		this.columnService.getColumns();
+		if (!this.taskService.getTasks()) {
+			this.taskService.fetch();
+		}
+		this.taskService.getTasks();
 		const id = Number.parseInt(event.target.dataset.id);
 		const columnId = event.target.dataset.columnId;
 		const disabled = !!event.target.dataset.disabled;
@@ -69,13 +93,20 @@ export default class MainController {
 		this.setBoard(false);
 	}
 
+	setTask(task) {
+		this.stateService.setTask(task);
+		// Демонстрация MainController.setTask(task) метода
+		console.log(`MainController.setTask(${JSON.stringify(task)})`);
+		console.log('MainController.taskService.getTasks()', this.taskService.getTasks());
+	}
+
 	setBoard(delay) {
 		const state = this.stateService.getState();
 		this.renderer.render(state, delay);
 	}
 
 	initEventHandlers() {
-		const board = document.getElementsByClassName(selectors.board)[0];
+		const board = document.querySelector(selectors.board);
 		board.addEventListener('click', (event) => this.handleTaskMoveClick(event));
 	}
 }
