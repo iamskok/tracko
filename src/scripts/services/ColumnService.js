@@ -16,4 +16,11 @@ export default class ColumnService {
 	getColumns() {
 		return this.columns;
 	}
+
+	getColumn(id) {
+		if (!this.getColumns()) {
+			this.fetch();
+		}
+		return this.getColumns().filter(column => column.id === id)[0];
+	}
 }
