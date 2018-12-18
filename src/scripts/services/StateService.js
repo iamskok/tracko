@@ -1,4 +1,5 @@
 import TaskService from './TaskService.js';
+import ColumnService from './ColumnService.js';
 
 export default class StateService {
 	setState(columns, tasks) {
@@ -22,6 +23,20 @@ export default class StateService {
 
 	getState() {
 		return this.state;
+	}
+
+	setTask(task) {
+		this.columnService = new ColumnService();
+		this.taskService = new TaskService();
+		const id = task.id;
+		if (this.columnService.getColumn(task.columnId)) {
+			if (!this.taskService.getTasks()) {
+				this.taskService.fetch();
+			}
+			if (this.taskService.getTasks().map(task => task.id !== id)) {
+				this.taskService.getTasks().push(task);
+			}
+		}
 	}
 
 	taskMoveLeft(id, columnId) {
