@@ -28,18 +28,13 @@ export default class TaskService {
 	}
 
 	put(task, columnId) {
-		if (!this.columnService.getColumns()) {
-			this.columnService.fetch();
-		}
-		this.columnService.getColumns().find(column => {
-			if (column.id === columnId) {
-				if (!this.getTasks()) {
-					this.fetch();
-				}
-				const tasks = this.getTasks();
-				tasks.push(Object.assign({id: tasks.length}, task, {columnId}));
+		if (this.columnService.getColumn(columnId)) {
+			if (!this.getTasks()) {
+				this.fetch();
 			}
-		});
+			const tasks = this.getTasks();
+			tasks.push(Object.assign({id: tasks.length}, task, {columnId}));
+		}
 	}
 
 	edit(id, prop) {
