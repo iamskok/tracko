@@ -21,18 +21,24 @@ export default class TaskService {
 	}
 
 	put(task, columnId) {
-		this.columnService.fetch();
+		if (!this.columnService.getColumns()) {
+			this.columnService.fetch();
+		}
 		this.columnService.getColumns().find(column => {
 			if (column.id === columnId) {
-				this.fetch();
+				if (!this.getTasks()) {
+					this.fetch();
+				}
 				const tasks = this.getTasks();
-				this.tasks.push(Object.assign({id: tasks.length}, task, {columnId}));
+				tasks.push(Object.assign({id: tasks.length}, task, {columnId}));
 			}
 		});
 	}
 
 	edit(id, prop) {
-		this.fetch();
+		if (!this.getTasks()) {
+			this.fetch();
+		}
 		this.getTasks().find(task => {
 			if (task.id === id) {
 				const taskKeys = Object.keys(task);
@@ -45,7 +51,9 @@ export default class TaskService {
 	}
 
 	assignColumn(taskId, columnId) {
-		this.fetch();
+		if (!this.getTasks()) {
+			this.fetch();
+		}
 		this.getTasks().filter(task => task.id === taskId)[0].columnId = columnId;
 	}
 }
