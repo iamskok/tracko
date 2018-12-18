@@ -6,7 +6,8 @@ export default `
 			<% column.cards.forEach((card) => { %>
 				<div
 					id=<%= card.id %>
-					class="Card isAnimated js-Card"
+					class="Card isAnimated"
+					data-target="card"
 					data-column-id=<%= card.columnId %>
 				>
 					<div class="Card-buttonContainer">

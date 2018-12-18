@@ -64,7 +64,7 @@ export default class MainController {
 	}
 
 	initEventHandlers() {
-		const board = document.getElementsByClassName(selectors.board)[0];
+		const board = document.querySelector(selectors.board);
 		board.addEventListener('click', (event) => this.handleTaskMoveClick(event));
 	}
 }

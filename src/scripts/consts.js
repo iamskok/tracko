@@ -1,8 +1,7 @@
 const selectors = {
-	animated: 'isAnimated',
-	disabled: 'isDisabled',
-	board: 'js-Board-body',
-	card: 'js-Card'
+	animation: 'isAnimated',
+	board: '[data-target="board-body"]',
+	card: '[data-target="card"]'
 };
 
 export {selectors};
