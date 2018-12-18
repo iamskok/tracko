@@ -43,5 +43,9 @@ export default class TaskService {
 			}
 		});
 	}
-}
 
+	assignColumn(taskId, columnId) {
+		this.fetch();
+		this.getTasks().filter(task => task.id === taskId)[0].columndId = columnId;
+	}
+}
