@@ -14,10 +14,12 @@ export default class Renderer {
 	removeCardAnimation(delay = 300) {
 		const cards = Array.from(document.querySelectorAll(selectors.card));
 		if (!delay) {
-			cards.forEach(card => card.className = card.className.replace(selectors.animation, ''));
+			cards.forEach(card => {
+				card.className = card.className.replace(selectors.animation, '').trim();
+			})
 		} else {
-			setTimeout(() => (cards.forEach((card) => {
-				return card.className = card.className.replace(selectors.animation, '');
+			setTimeout(() => (cards.forEach(card => {
+				return card.className = card.className.replace(selectors.animation, '').trim();
 			})), delay);
 		}
 	}
