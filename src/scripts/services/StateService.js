@@ -1,3 +1,5 @@
+import TaskService from './TaskService.js';
+
 export default class StateService {
 	setState(columns, tasks) {
 		const state = {};
@@ -22,49 +24,47 @@ export default class StateService {
 		return this.state;
 	}
 
-	taskMoveLeft(id) {
+	taskMoveLeft(id, columnId) {
+		this.taskService = new TaskService();
 		const state = this.getState();
-		for (let i = 0; i < state.columns.length; i++) {
-			const column = state.columns[i];
-			if (state.columns[0] !== column) {
-				if (column.cards) {
-					const cardIndex = column.cards.findIndex(card => card.id === id);
-					const card = cardIndex !== -1 && column.cards[cardIndex];
-					if (card) {
-						const prevColumn = state.columns[i - 1];
-						if (prevColumn.cards) {
-							prevColumn.cards.push(card);
-						} else {
-							prevColumn.cards = [card];
-						}
-
-						return column.cards.splice(cardIndex, 1);
-					}
-				}
+		const columns = state.columns;
+		const columnIds = columns.map(column => column.id);
+		const firstColumnId = columnIds[0];
+		if (firstColumnId !== columnId) {
+			const currentColumnIndex = columnIds.indexOf(columnId);
+			const currentColumn = columns[currentColumnIndex];
+			const cardIndex = currentColumn.cards.findIndex(card => card.id === id);
+			const card = cardIndex !== -1 && currentColumn.cards[cardIndex];
+			const leftColumn = columns[currentColumnIndex - 1];
+			if (leftColumn.cards) {
+				leftColumn.cards.push(card);
+			} else {
+				leftColumn.cards = [card];
 			}
+			currentColumn.cards.splice(cardIndex, 1);
+			this.taskService.assignColumn(id, leftColumn.id);
 		}
 	}
 
-	taskMoveRight(id) {
+	taskMoveRight(id, columnId) {
+		this.taskService = new TaskService();
 		const state = this.getState();
-		for (let i = 0; i < state.columns.length; i++) {
-			const column = state.columns[i];
-			if (state.columns[state.columns.length - 1] !== column) {
-				if (column.cards) {
-					const cardIndex = column.cards.findIndex(card => card.id === id);
-					const card = cardIndex !== -1 && column.cards[cardIndex];
-					if (card) {
-						const nextColumn = state.columns[i + 1];
-						if (nextColumn.cards) {
-							nextColumn.cards.push(card);
-						} else {
-							nextColumn.cards = [card];
-						}
-
-						return column.cards.splice(cardIndex, 1);
-					}
-				}
+		const columns = state.columns;
+		const columnIds = columns.map(column => column.id);
+		const lastColumnId = columnIds[columnIds.length - 1];
+		if (lastColumnId !== columnId) {
+			const currentColumnIndex = columnIds.indexOf(columnId);
+			const currentColumn = columns[currentColumnIndex];
+			const cardIndex = currentColumn.cards.findIndex(card => card.id === id);
+			const card = cardIndex !== -1 && currentColumn.cards[cardIndex];
+			const rightColumn = columns[currentColumnIndex + 1];
+			if (rightColumn.cards) {
+				rightColumn.cards.push(card);
+			} else {
+				rightColumn.cards = [card];
 			}
+			currentColumn.cards.splice(cardIndex, 1);
+			this.taskService.assignColumn(id, rightColumn.id);
 		}
 	}
 }
