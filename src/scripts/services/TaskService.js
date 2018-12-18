@@ -26,11 +26,7 @@ export default class TaskService {
 			if (column.id === columnId) {
 				this.fetch();
 				const tasks = this.getTasks();
-				this.tasks.push(Object.assign(
-					{id: tasks.length},
-					task,
-					{columnId}
-				));
+				this.tasks.push(Object.assign({id: tasks.length}, task, {columnId}));
 			}
 		});
 	}
