@@ -26,7 +26,7 @@ export default class MainController {
 			this.taskService.getTasks()
 		);
 		this.initEventHandlers();
-		this.setBoard();
+		this.setBoard(300);
 	}
 
 	handleTaskMoveClick(event) {
@@ -57,12 +57,12 @@ export default class MainController {
 
 	taskMoveLeft(id, columnId) {
 		this.stateService.taskMoveLeft(id, columnId);
-		this.setBoard(false);
+		this.setBoard();
 	}
 
 	taskMoveRight(id, columnId) {
 		this.stateService.taskMoveRight(id, columnId);
-		this.setBoard(false);
+		this.setBoard();
 	}
 
 	setTask(task) {
