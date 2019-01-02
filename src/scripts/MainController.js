@@ -65,10 +65,6 @@ export default class MainController {
 		this.setBoard();
 	}
 
-	setTask(task) {
-		this.stateService.setTask(task);
-	}
-
 	setBoard(delay) {
 		const state = this.stateService.getState();
 		this.renderer.render(state, delay);
