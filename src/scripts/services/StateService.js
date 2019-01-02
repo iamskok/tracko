@@ -25,20 +25,6 @@ export default class StateService {
 		return this.state;
 	}
 
-	setTask(task) {
-		this.columnService = new ColumnService();
-		this.taskService = new TaskService();
-		const id = task.id;
-		if (this.columnService.getColumn(task.columnId)) {
-			if (!this.taskService.getTasks()) {
-				this.taskService.fetch();
-			}
-			if (this.taskService.getTasks().map(task => task.id !== id)) {
-				this.taskService.getTasks().push(task);
-			}
-		}
-	}
-
 	taskMoveLeft(id, columnId) {
 		this.taskService = new TaskService();
 		const state = this.getState();
