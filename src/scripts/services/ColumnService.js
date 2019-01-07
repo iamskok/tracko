@@ -4,13 +4,14 @@ export default class ColumnService {
 	constructor() {
 		if (!ColumnService.instance) {
 			ColumnService.instance = this;
+			this.columns = [];
 		} else {
-			return this;
+			return ColumnService.instance;
 		}
 	}
 
-	fetch() {
-		this.columns = columns.columns;
+	async fetch() {
+		this.columns = await Promise.resolve(columns);
 	}
 
 	getColumns() {
@@ -18,9 +19,6 @@ export default class ColumnService {
 	}
 
 	getColumn(id) {
-		if (!this.getColumns()) {
-			this.fetch();
-		}
-		return this.getColumns().filter(column => column.id === id)[0];
+		return this.columns.filter(column => column.id === id)[0];
 	}
 }

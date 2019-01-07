@@ -5,15 +5,15 @@ export default class TaskService {
 	constructor() {
 		if (!TaskService.instance) {
 			TaskService.instance = this;
+			this.tasks = [];
+			this.columnService = new ColumnService();
 		} else {
-			return this;
+			return TaskService.instance;
 		}
-
-		this.columnService = new ColumnService();
 	}
 
-	fetch() {
-		this.tasks = tasks.cards;
+	async fetch() {
+		this.tasks = await Promise.resolve(tasks);
 	}
 
 	getTasks() {
@@ -21,31 +21,24 @@ export default class TaskService {
 	}
 
 	getTask(id) {
-		if (!this.getTasks()) {
-			this.fetch();
-		}
-		return this.getTasks().filter(task => task.id === id)[0];
+		return this.tasks.filter(task => task.id === id)[0];
 	}
 
-	put(task, columnId) {
+	put(title, columnId) {
 		if (this.columnService.getColumn(columnId)) {
-			if (!this.getTasks()) {
-				this.fetch();
-			}
-			this.getTasks().push(
-				Object.assign({id: this.getTasks().length},
-				task,
-				{columnId}));
+			this.tasks.push({
+				id: this.tasks.length,
+				title,
+				columnId
+			});
+		} else {
+			console.error(`TaskService.put: ${columnId} does not exist.`)
 		}
 	}
 
-	edit(id, prop) {
+	edit(title, id) {
 		const task = this.getTask(id);
-		const taskKeys = Object.keys(task);
-		const propKey = Object.keys(prop)[0];
-		if (taskKeys.includes(propKey)) {
-			Object.assign(task, prop);
-		}
+		task.title = title;
 	}
 
 	assignColumn(id, columnId) {
