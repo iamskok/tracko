@@ -3,8 +3,9 @@ import ColumnService from './ColumnService.js';
 
 export default class StateService {
 	setState(columns, tasks) {
-		const state = {};
-		state.columns = [];
+		const state = {
+			columns: []
+		};
 		Object.assign(state.columns, columns);
 		state.columns.forEach(column => {
 			tasks.forEach(task => {
