@@ -9,7 +9,7 @@ export default class MainController {
 		if (!MainController.instance) {
 			MainController.instance = this;
 		} else {
-			return this;
+			return MainController.instance;
 		}
 
 		this.columnService = new ColumnService();
@@ -18,9 +18,9 @@ export default class MainController {
 		this.renderer = new Renderer();
 	}
 
-	run() {
-		this.columnService.fetch();
-		this.taskService.fetch();
+	async run() {
+		await this.columnService.fetch();
+		await this.taskService.fetch();
 		this.stateService.setState(
 			this.columnService.getColumns(),
 			this.taskService.getTasks()
@@ -29,15 +29,7 @@ export default class MainController {
 		this.setBoard(300);
 	}
 
-	handleTaskMoveClick(event) {
-		if (!this.columnService.getColumns()) {
-			this.columnService.fetch();
-		}
-		this.columnService.getColumns();
-		if (!this.taskService.getTasks()) {
-			this.taskService.fetch();
-		}
-		this.taskService.getTasks();
+	async handleTaskMoveClick(event) {
 		const id = Number.parseInt(event.target.dataset.id);
 		const columnId = event.target.dataset.columnId;
 		const disabled = !!event.target.dataset.disabled;
