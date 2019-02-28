@@ -12,4 +12,4 @@
 
 💡
 
-👨‍💻 with `ES6`.
+👨‍💻 with `ES6` and [GitHub Pages](https://pages.github.com/).
