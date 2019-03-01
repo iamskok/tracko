@@ -10,10 +10,6 @@ export default `
 					data-target="card"
 					data-column-id=<%= card.columnId %>
 				>
-					<div class="Card-buttonContainer">
-						<button class="Card-button">edit</button>
-						<button class="Card-button">remove</button>
-					</div>
 					<h3 class="Card-header"><%= card.title %></h3> 
 					<% if (column === columns[0]) { %>
 						<div class="Card-buttonContainer">
