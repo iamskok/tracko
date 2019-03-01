@@ -75,6 +75,5 @@ export default `
 				</div>
 			<% }); %>
 		<% } %>
-		<button class="Column-button">add a task</button>
 	</section>
 <% }); %>`
